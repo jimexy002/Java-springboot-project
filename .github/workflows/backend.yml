@@ -150,7 +150,7 @@ jobs:
             [[ "$HEALTH" == *'"status":"UP"'* ]]
 
       - name: Send Deployment Report
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v4
         with:
           # Connection details (ensure these are set up)
           server_address: smtp.gmail.com
