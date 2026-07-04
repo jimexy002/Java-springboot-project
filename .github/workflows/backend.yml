@@ -149,28 +149,19 @@ jobs:
             echo "$HEALTH"
             [[ "$HEALTH" == *'"status":"UP"'* ]]
 
-       - name: Send Deployment Report
-  if: always()
-  uses: dawidd6/action-send-mail@v3
-  with:
-    server_address: smtp.gmail.com
-    server_port: 465
-    secure: true
-    username: ${{ secrets.EMAIL_USERNAME }}
-    password: ${{ secrets.EMAIL_PASSWORD }}
-
-    subject: Backend Deployment Report - ${{ github.repository }}
-
-    to: ${{ secrets.EMAIL_TO }}
-    from: GitHub Actions <${{ secrets.EMAIL_USERNAME }}>
-
-    body: |
-      Repository : ${{ github.repository }}
-      Branch     : ${{ github.ref_name }}
-      Commit     : ${{ github.sha }}
-      Status     : ${{ job.status }}
-      Actor      : ${{ github.actor }}
-      Workflow   : ${{ github.workflow }}
-
-      SonarQube Scan : Completed
+      - name: Send Deployment Report
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Connection details (ensure these are set up)
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          
+          # Fix: You must specify at least one of these recipient fields
+          to: recipient@example.com
+          
+          subject: Deployment Report
+          body: |
+            The deployment has completed successfully!
             Quality Gate: Passed if workflow succeeded.
