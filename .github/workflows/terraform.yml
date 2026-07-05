@@ -20,10 +20,16 @@ jobs:
       TF_VAR_db_password: ${{ secrets.TF_VAR_DB_PASSWORD }}
       TF_VAR_ami: ${{ secrets.TF_VAR_AMI }}
 
-    defaults:
-      run:
-        working-directory: environments/prod
+    steps:
+  - name: Check out repository
+    uses: actions/checkout@v4
 
+  - name: Run script in prod environment
+    working-directory: ./environments/prod # or the full path
+    run: |
+      echo "Running in prod..."
+        
+ 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
