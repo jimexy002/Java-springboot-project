@@ -63,7 +63,7 @@ jobs:
             REPO_NAME=Java-springboot-project
             REPO_URL=https://github.com/CloudTechDevOps/Java-springboot-project.git
 
-            echo "ð Starting deployment..."
+            echo "🚀 Starting deployment..."
 
             mkdir -p $APP_DIR
             cd $APP_DIR
@@ -123,7 +123,7 @@ jobs:
       # Email Notification
       ######################################################
 
-      - name: ð§ Send Deployment Report
+      - name: 📧 Send Deployment Report
         if: success() || failure()
         uses: dawidd6/action-send-mail@v3
         with:
@@ -137,7 +137,7 @@ jobs:
           from: ${{ secrets.EMAIL_USERNAME }}
 
           body: |
-            ð AI Deployment Report
+            🚀 AI Deployment Report
 
             Repository : ${{ github.repository }}
             Workflow   : ${{ github.workflow }}
@@ -157,4 +157,3 @@ jobs:
 
             Regards,
             GitHub Actions
-# working fine
