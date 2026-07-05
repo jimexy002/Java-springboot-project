@@ -37,3 +37,6 @@ jobs:
       - run: terraform plan -out=tfplan
 
       - run: terraform apply -auto-approve tfplan
+defaults:
+  run:
+    working-directory: environments/prod
